@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, NavLink as MenuLink, Link as A } from 'theme-ui';
+import { jsx, NavLink as MenuLink, Link as Anchor } from 'theme-ui';
 import NextLink from 'next/link';
 
 export function NavLink({ path, label, children, ...rest }) {
@@ -10,6 +10,11 @@ export function NavLink({ path, label, children, ...rest }) {
 
 export function Link({ path, label, children, ...rest }) {
   return (
-    <h1>Link</h1>
+    <Anchor
+      href={path}
+      {...rest}
+    >
+      {children ?? label}
+    </Anchor>
   );
 }

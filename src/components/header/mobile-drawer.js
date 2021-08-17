@@ -5,30 +5,91 @@ import Drawer from 'components/drawer';
 import { IoMdClose, IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-scroll';
 import { FaFacebookF, FaTwitter, FaGithubAlt, FaDribbble } from 'react-icons/fa';
+import MenuItem from 'components/menu-item';
 import menuItems from './header.data';
 
-const social = [
+const socialLinks = [
   {
     path: '/',
+    label: 'Facebook',
     icon: <FaFacebookF />,
   },
   {
     path: '/',
+    label: 'Twitter',
     icon: <FaTwitter />,
   },
   {
     path: '/',
+    label: 'GitHub',
     icon: <FaGithubAlt />,
   },
   {
     path: '/',
+    label: 'Dribbble',
     icon: <FaDribbble />,
   },
 ];
 
 export default function MobileDrawer() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  const toggleDrawer = () => {
+    setIsDrawerOpen((isDrawerOpen) => !isDrawerOpen);
+  };
+
+  const renderMenuItem = (menuItem) => (
+    <MenuItem
+      label={menuItem.label}
+      path={menuItem.path}
+      key={menuItem.path}
+    />
+  );
+
+  const renderSocialLink = (socialLink) => (
+    <Box
+      as="span"
+      sx={styles.social.icon}
+      key={socialLink.label}
+    >
+      <Link to={socialLink.path}>
+        {socialLink.icon}
+      </Link>
+    </Box>
+  );
+
   return (
-   <h1>Mobile Drawer</h1>
+   <Drawer
+    width="320px"
+    drawerHandler={
+      <Box sx={styles.handler}>
+        <IoMdMenu size="26px" />
+      </Box>
+    }
+    open={isDrawerOpen}
+    toggleHandler={toggleDrawer}
+    closeButton={
+      <IoMdClose
+        size="24px"
+        color="#000"
+      />
+    }
+    drawerStyle={styles.drawer}
+    closeButtonStyle={styles.close}
+   >
+     <Scrollbars autoHide>
+      <Box sx={styles.content}>
+        <Box sx={styles.menu}>
+          {menuItems.map(renderMenuItem)}
+        </Box>
+        <Box sx={styles.menuFooter}>
+          <Box sx={styles.social}>
+            {socialLinks.map(renderSocialLink)}
+          </Box>
+        </Box>
+      </Box>
+     </Scrollbars>
+   </Drawer>
   );
 };
 

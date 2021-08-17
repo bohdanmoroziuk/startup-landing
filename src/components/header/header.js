@@ -1,15 +1,46 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Button } from 'theme-ui';
 import { keyframes } from '@emotion/core';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import Logo from 'components/logo';
 import LogoDark from 'assets/logo.svg';
 import MobileDrawer from './mobile-drawer';
+import MenuItem from 'components/menu-item';
 import menuItems from './header.data';
 
 export default function Header({ className }) {
+  const renderMenuItem = (menuItem) => (
+    <MenuItem
+      label={menuItem.label}
+      path={menuItem.path}
+      key={menuItem.path}
+    />
+  );
+
   return (
-      <h1>Header</h1>
+    <header
+      className={className}
+      sx={styles.header}
+      id="header"
+    >
+      <Container sx={styles.container}>
+        <Logo src={LogoDark} />
+        <Flex
+          sx={styles.nav}
+          as="nav"
+        >
+          {menuItems.map(renderMenuItem)}
+        </Flex>
+        <Button
+          className="donate__btn"
+          variant="secondary"
+          aria-label="Get Started"
+        >
+          Get Started
+        </Button>
+        <MobileDrawer />
+      </Container>
+    </header>
   );
 }
 
