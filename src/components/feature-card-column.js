@@ -3,12 +3,26 @@ import { jsx, Image, Box, Heading, Text } from 'theme-ui';
 
 export default function FeatureCardColumn({
   src,
-  altText = 'default alt text',
+  alt = 'default alt text',
   title,
   text,
 }) {
   return (
-    <h1>FeatureCardColumn</h1>
+    <Box sx={styles.card}>
+      <Image
+        src={src}
+        alt={alt}
+        sx={styles.img}
+      />
+      <Box sx={styles.wrapper}>
+        <Heading sx={styles.wrapper.title}>
+          {title}
+        </Heading>
+        <Text sx={styles.wrapper.subTitle}>
+          {text}
+        </Text>
+      </Box>
+    </Box>
   );
 }
 
