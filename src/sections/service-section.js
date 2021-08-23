@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 /** @jsx jsx */
 import { jsx, Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
-import { keyframes } from '@emotion/core';
-import TextFeature from 'components/text-feature';
 import ModalVideo from 'react-modal-video';
+import { keyframes } from '@emotion/core';
 import { IoIosPlay } from 'react-icons/io';
 
+import TextFeature from 'components/text-feature';
+
 import ServiceThumb from 'assets/service-thumb.png';
-import shapePattern from 'assets/shape-pattern1.png';
+import ShapePattern from 'assets/shape-pattern1.png';
 
 import Smart from 'assets/services/smart.svg';
 import Secure from 'assets/services/secure.svg';
@@ -36,8 +37,74 @@ const data = {
 };
 
 export default function ServiceSection() {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+  };
+
+  const renderFeature = (feature) => (
+    <Box
+      sx={styles.card}
+      key={feature.id}
+    >
+      <Image
+        sx={styles.icon}
+        src={feature.imgSrc}
+        alt={feature.altText}
+      />
+      <Box sx={styles.wrapper}>
+        <Heading sx={styles.wrapper.title}>
+          {feature.title}
+        </Heading>
+        <Text sx={styles.wrapper.subTitle}>
+          {feature.text}
+        </Text>
+      </Box>
+    </Box>
+  ); 
+
   return (
-    <h1>Service Section</h1>
+    <section sx={{ variant: 'section.services' }}>
+      <Container sx={styles.containerBox}>
+        <Box sx={styles.thumbnail}>
+          <Image src={ServiceThumb} alt="Thumbnail" />
+          <Button
+            sx={styles.videoBtn}
+            type="button"
+            onClick={openVideoModal}
+            aria-label="Play Button"
+          >
+            <span>
+              <IoIosPlay />
+            </span>
+          </Button>
+          <Box sx={styles.shapeBox}>
+            <Image src={ShapePattern} alt="Shape" />
+          </Box>
+        </Box>
+        <Box sx={styles.contentBox}>
+          <TextFeature
+            title={data.title}
+            subTitle={data.subTitle}
+          />
+
+          <Grid sx={styles.grid}>
+            {data.features.map(renderFeature)}
+          </Grid>
+        </Box>
+      </Container>
+      <ModalVideo
+        channel="youtube"
+        videoId="iGBERMGMIvc"
+        isOpen={isVideoModalOpen}
+        onClose={closeVideoModal}
+      />
+    </section>
   );
 }
 
