@@ -35,8 +35,40 @@ const data = [
 ];
 
 export default function WorkFlow() {
+  const renderCard = (item, index) => {
+    const icon = (index + 1).toString().padStart(2, '0');
+
+    return (
+      <Box sx={styles.card} key={item.id}>
+        <Box sx={styles.iconBox}>
+          {icon}
+        </Box>
+        <Box sx={styles.wrapper}>
+          <Heading sx={styles.wrapper.title}>
+            {item.title}
+          </Heading>
+          <Text sx={styles.wrapper.subTitle}>
+            {item.text}
+          </Text>
+        </Box>
+      </Box>
+    );
+  };
+
   return (
-    <h1>Workflow</h1>
+    <section sx={styles.workflow}>
+      <Container>
+        <SectionHeader
+          slogan="Whats the function"
+          title="Meet the feature of our product"
+          isWhite
+        />
+
+        <Grid sx={styles.grid}>
+          {data.map(renderCard)}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 
