@@ -7,6 +7,7 @@ import PriceCard from 'components/price-card';
 import ButtonGroup from 'components/button-group';
 import SectionHeader from 'components/section-header';
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
+import cx from 'classnames';
 
 const packages = {
   monthly: [
@@ -242,6 +243,25 @@ const responsive = {
 export default function Package() {
   const { monthly, annual } = packages;
 
+  const [state, setState] = useState({
+    active: 'monthly',
+    pricingPlan: monthly,
+  });
+
+  const handlePricingPlanChange = (plan) => {
+    if (plan === 'annual') {
+      setState({
+        active: 'annual',
+        pricingPlan: annual,
+      });
+    } else {
+      setState({
+        active: 'monthly',
+        pricingPlan: monthly,
+      });
+    }
+  };
+
   const sliderParams = {
     additionalTransfrom: 0,
     arrows: false,
@@ -266,7 +286,42 @@ export default function Package() {
   };
 
   return (
-    <h1>Package</h1>
+    <section sx={{ variant: 'section.pricing' }} id="pricing">
+      <Container>
+        <SectionHeader
+          slogan="Pricing Plan"
+          title="Choose your pricing plan"
+        />
+
+        <Flex sx={styles.buttonGroup}>
+          <Box sx={styles.buttonGroupInner}>
+            <button
+              className={cx({ active: state.active === 'monthly' })}
+              aria-label="Monthly"
+              onClick={() => handlePricingPlanChange('monthly')}
+            >
+              Monthly Plan
+            </button>
+            <button
+              className={cx({ active: state.active === 'annual' })}
+              aria-label="Annual"
+              onClick={() => handlePricingPlanChange('annual')}
+            >
+              Annual Plan
+            </button>
+          </Box>
+        </Flex>
+        <Box sx={styles.pricingWrapper} className="pricing__wrapper">
+          <Carousel {...sliderParams}>
+            {state.pricingPlan.map((pkg) => (
+              <Box sx={styles.pricingItem} key={pkg.id}>
+                <PriceCard data={pkg} />
+              </Box>
+            ))}
+          </Carousel>
+        </Box>
+      </Container>
+    </section>
   );
 }
 
