@@ -3,8 +3,44 @@ import { jsx } from 'theme-ui';
 import { Text, Heading, Image, Box, Link } from 'theme-ui';
 
 export default function TeamCard({ src, altText, title, designation, social }) {
+  const renderSocialLink = (item) => (
+    <Link
+      className={item.name}
+      href={item.path}
+      key={item.id}
+    >
+      {item.icon}
+    </Link>
+  );
+
   return (
-    <h1>TeamCard</h1>
+    <Box sx={styles.card}>
+      <Image
+        src={src}
+        alt={altText}
+        memberThumb={styles.memberThumb}  
+      />
+      <Box sx={styles.infoWrapper}>
+        <Heading
+          className="info__name"
+          sx={styles.infoWrapper.name}
+        >
+          {title}
+        </Heading>
+        <Text
+          className="info__designation"
+          sx={styles.infoWrapper.designation}
+        >
+          {designation}
+        </Text>
+      </Box>
+      <Box
+        className="social__share"
+        sx={styles.socialShare}
+      >
+        {social.map(renderSocialLink)}
+      </Box>
+    </Box>
   );
 }
 

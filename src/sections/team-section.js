@@ -178,8 +178,30 @@ const data = [
 ];
 
 export default function TeamSection() {
+  const renderTeamCard = (item) => (
+    <TeamCard
+      key={item.id}
+      src={item.imgSrc}
+      altText={item.altText}
+      title={item.title}
+      designation={item.designation}
+      social={item.socialProfile}
+    />
+  );
+
   return (
-    <h1>Team Section</h1>
+    <section>
+      <Container>
+        <SectionHeader
+          slogan="Our team"
+          title="The most qualified and talented individuals"
+        />
+
+        <Grid sx={styles.grid}>
+          {data.map(renderTeamCard)}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 
