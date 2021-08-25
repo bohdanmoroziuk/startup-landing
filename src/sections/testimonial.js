@@ -100,8 +100,57 @@ const carouselParams = {
 }
 
 export default function TestimonialCard() {
+  const renderReviewCard = (item) => (
+    <Box 
+      sx={styles.reviewCard}
+      key={item.id}  
+    >
+      <Rating rating={item.review} />
+      <Heading
+        sx={styles.title}
+        as="h3"
+      >
+        {item.title}
+      </Heading>
+      <Text sx={styles.description}>
+        {item.description}
+      </Text>
+      <div className="card-footer">
+        <div className="image">
+          <Image src={item.avatar} alt="Client image" />
+        </div>
+        <div className="reviewer-info">
+          <Heading
+            sx={styles.heading}
+            as="h4"
+          >
+            {item.name}
+          </Heading>
+          <Text sx={styles.designation}>
+            {item.designation}
+          </Text>
+        </div>
+      </div>
+    </Box>
+  );
+
   return (
-   <h1>Testimonial Card</h1>
+    <section
+      sx={{ variant: 'section.testimonial' }}
+      id="testimonial"
+    >
+      <Container css={{ textAlign: 'center' }}>
+        <SectionHeader
+          slogan="Testimonial"
+          title="Meet Client Satisfaction"
+        />
+      </Container>
+      <Box sx={styles.carouselWrapper}>
+        <Carousel {...carouselParams}>
+          {data.map(renderReviewCard)}
+        </Carousel>
+      </Box>
+    </section>
   );
 }
 

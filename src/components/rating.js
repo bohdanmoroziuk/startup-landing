@@ -1,9 +1,26 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import cx from 'classnames';
 
-const Rating = () => {
+const Rating = ({ rating }) => {
+  const totalRating = Array(5).fill(null).map((_, index) => (
+    <li
+      className={cx({
+        'star': index < rating,
+        'star-o': index >= rating
+      })}
+      key={index}
+    >
+      <FaStar />
+    </li>
+  ));
+
   return (
-    <h1>Rating</h1>
+    <div className="rating">
+      <ul>
+        {totalRating}
+      </ul>
+    </div>
   );
 };
 
