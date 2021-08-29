@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import { Box } from 'theme-ui';
 import RcDrawer from 'rc-drawer';
 import classNames from 'classnames';

@@ -1,7 +1,7 @@
 import { Box, Card, Text, Heading, Button } from 'theme-ui';
-import React from 'react';
-import List from './list';
 import cx from 'classnames';
+
+import List from 'components/list';
 
 export default function PriceCard({
   data: {

@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Text, Box, Image } from 'theme-ui';
-import SectionHeader from 'components/section-header';
+import Carousel from 'react-multi-carousel';
+
 import Rating from 'components/rating';
 import ButtonGroup from 'components/button-group';
-import Carousel from 'react-multi-carousel';
+import SectionHeader from 'components/section-header';
 
 import Avatar1 from 'assets/testimonial/avatar1.png';
 import Avatar2 from 'assets/testimonial/avatar2.png';

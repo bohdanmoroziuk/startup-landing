@@ -1,4 +1,3 @@
-import React from 'react';
 import { Flex, Box, IconButton } from 'theme-ui';
 import cx from 'classnames';
 

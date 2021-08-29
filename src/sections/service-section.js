@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 /** @jsx jsx */
+import { useState } from 'react';
+
 import { jsx, Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
 import ModalVideo from 'react-modal-video';
 import { keyframes } from '@emotion/core';

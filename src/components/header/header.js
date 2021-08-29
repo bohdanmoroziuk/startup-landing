@@ -1,12 +1,14 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Button } from 'theme-ui';
 import { keyframes } from '@emotion/core';
-import { Link as ScrollLink } from 'react-scroll';
+
 import Logo from 'components/logo';
-import LogoDark from 'assets/logo.svg';
-import MobileDrawer from './mobile-drawer';
 import MenuItem from 'components/menu-item';
-import menuItems from './header.data';
+import MobileDrawer from 'components/header/mobile-drawer';
+
+import menuItems from 'components/header/header.data';
+
+import LogoDark from 'assets/logo.svg';
 
 export default function Header({ className }) {
   const renderMenuItem = (menuItem) => (

@@ -1,13 +1,15 @@
 /** @jsx jsx */
+import { useState } from 'react';
+
 import { jsx, Container, Box, Flex } from 'theme-ui';
 import { keyframes } from '@emotion/core';
-import React, { useState } from 'react';
 import Carousel from 'react-multi-carousel';
+import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
+import cx from 'classnames';
+
 import PriceCard from 'components/price-card';
 import ButtonGroup from 'components/button-group';
 import SectionHeader from 'components/section-header';
-import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
-import cx from 'classnames';
 
 const packages = {
   monthly: [

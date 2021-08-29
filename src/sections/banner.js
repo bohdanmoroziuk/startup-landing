@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
-import { Container, Box, Heading, Text, Image, Button } from 'theme-ui';
+import { jsx, Container, Box, Heading, Text, Image, Button } from 'theme-ui';
+
 import BannerImage from 'assets/banner-thumb.png';
 import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
