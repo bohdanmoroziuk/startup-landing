@@ -1,18 +1,16 @@
-import { FaStar } from 'react-icons/fa';
-import cx from 'classnames';
+import RatingStar from 'components/rating-star';
 
 const Rating = ({ rating }) => {
-  const totalRating = Array(5).fill(null).map((_, index) => (
-    <li
-      className={cx({
-        'star': index < rating,
-        'star-o': index >= rating
-      })}
+  const renderStar = (rating) => (_, index) => (
+    <RatingStar
       key={index}
-    >
-      <FaStar />
-    </li>
-  ));
+      isActive={index >= rating}
+    />
+  );
+  
+  const totalRating = Array(5)
+    .fill(null)
+    .map(renderStar(rating));
 
   return (
     <div className="rating">
