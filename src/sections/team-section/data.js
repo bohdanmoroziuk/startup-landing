@@ -1,9 +1,4 @@
-/** @jsx jsx */
-import { jsx, Container, Grid } from 'theme-ui';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-
-import TeamCard from 'components/team-card';
-import SectionHeader from 'components/section-header';
 
 import Member1 from 'assets/team/member-1.png';
 import Member2 from 'assets/team/member-2.png';
@@ -12,7 +7,7 @@ import Member4 from 'assets/team/member-4.png';
 import Member5 from 'assets/team/member-5.png';
 import Member6 from 'assets/team/member-6.png';
 
-const data = [
+export const teamMembers = [
   {
     id: 1,
     imgSrc: Member1,
@@ -176,45 +171,3 @@ const data = [
     ],
   },
 ];
-
-export default function TeamSection() {
-  const renderTeamCard = (item) => (
-    <TeamCard
-      key={item.id}
-      src={item.imgSrc}
-      altText={item.altText}
-      title={item.title}
-      designation={item.designation}
-      social={item.socialProfile}
-    />
-  );
-
-  return (
-    <section>
-      <Container>
-        <SectionHeader
-          slogan="Our team"
-          title="The most qualified and talented individuals"
-        />
-
-        <Grid sx={styles.grid}>
-          {data.map(renderTeamCard)}
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-const styles = {
-  grid: {
-    mt: [0, null, -6, null, -4],
-    gridGap: ['35px 0px', null, 0, null, null, '30px 35px'],
-    gridTemplateColumns: [
-      'repeat(2,1fr)',
-      null,
-      'repeat(2,1fr)',
-      null,
-      'repeat(3,1fr)',
-    ],
-  },
-};
