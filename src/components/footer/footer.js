@@ -5,7 +5,7 @@ import { Link } from 'components/link';
 
 import FooterLogo from 'assets/logo.svg';
 
-import data from 'components/footer/footer.data';
+import data from 'components/footer/data';
 
 export default function Footer() {
   const renderMenuItem = (item) => (

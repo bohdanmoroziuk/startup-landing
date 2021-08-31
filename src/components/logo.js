@@ -2,7 +2,7 @@
 import { jsx, Image } from 'theme-ui';
 import { Link } from 'components/link';
 
-export default function Logo({ src, ...rest }) {
+export default function Logo({ src, alt = 'Landing page logo', ...rest }) {
   return (
     <Link
       path="/"
@@ -16,7 +16,7 @@ export default function Logo({ src, ...rest }) {
     >
       <Image
         src={src}
-        alt="Landing page logo"
+        alt={alt}
       />
     </Link>
   );

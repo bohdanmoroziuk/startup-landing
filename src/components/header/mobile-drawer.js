@@ -6,7 +6,7 @@ import { IoMdClose, IoMdMenu } from 'react-icons/io';
 import { Link } from 'react-scroll';
 import { FaFacebookF, FaTwitter, FaGithubAlt, FaDribbble } from 'react-icons/fa';
 import MenuItem from 'components/menu-item';
-import menuItems from './header.data';
+import menuItems from './data';
 
 const socialLinks = [
   {

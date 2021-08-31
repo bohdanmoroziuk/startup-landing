@@ -6,7 +6,7 @@ import Logo from 'components/logo';
 import MenuItem from 'components/menu-item';
 import MobileDrawer from 'components/header/mobile-drawer';
 
-import menuItems from 'components/header/header.data';
+import menuItems from 'components/header/data';
 
 import LogoDark from 'assets/logo.svg';
 
