@@ -1,6 +1,7 @@
 {
   "name": "landing-page",
   "version": "0.0.1",
+  "description": "Startup landing design",
   "private": true,
   "scripts": {
     "dev": "next dev",

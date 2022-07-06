@@ -1,11 +1,15 @@
+# Startup Landing
+
+> Startup landing design.
+
 ## Getting Started
 
-Install the dependencies and run the development server
-
+Install the dependencies
 ```bash
 npm install
+```
+
+Run the development server
+```bash
 npm run dev
-# or
-yarn
-yarn dev
 ```
